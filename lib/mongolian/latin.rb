@@ -1,5 +1,5 @@
 module Mongolian
-  # 传统蒙古文很多时候需要对其进行拉丁撰写
+  # 传统蒙古文很多时候需要对其进行拉丁转写，本程序对相关传统蒙古文词句进行转写转换
   # 转换原则：
   # 1. 仅针对传统蒙古文进行转换；
   # 2. 传统蒙古文与拉丁转写字母一一对应；
@@ -99,7 +99,7 @@ module Mongolian
     return latin_str
   end
   
-  # trans latin to traditional mongolian
+  # 对拉丁转写蒙古文恢复为蒙古文
   def self.l2tm(str)
     latin_str = str
     mongolian_str = latin_str
