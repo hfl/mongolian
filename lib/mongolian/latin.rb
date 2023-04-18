@@ -106,7 +106,4 @@ module Mongolian
     return mongolian_str
   end
   
-  def 
-    
-  end
 end

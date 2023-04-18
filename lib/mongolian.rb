@@ -1,4 +1,5 @@
 require "mongolian/version"
+require "mongolian/latin"
 
 module Mongolian
   def self.sainuu(name)

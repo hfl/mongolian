@@ -5,7 +5,11 @@ class MongolianTest < Minitest::Test
     refute_nil ::Mongolian::VERSION
   end
 
-  def test_it_say_hello
+  def test_say_hello
     assert_equal "sainuu, Mongolian!", Mongolian.sainuu("Mongolian")
+  end
+  
+  def test_tm2l
+    assert_equal "bičig", Mongolian.tm2l("ᠪᠢᠴᠢᠭ")
   end
 end
