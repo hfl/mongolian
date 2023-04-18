@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "mongolian"
   spec.version       = Mongolian::VERSION
   spec.authors       = ["Huang Feilong"]
-  spec.email         = ["huangfeilong@gmail.com"]
+  spec.email         = ["hfl@huangfeilong.com"]
 
   spec.summary       = %q{Mongolian Process Gem.}
   spec.description   = %q{Process Mongolian with Ruby.}
-  spec.homepage      = "http://huangfeilong.cn/"
+  spec.homepage      = "https://huangfeilong.com/"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

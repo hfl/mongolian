@@ -1,7 +1,7 @@
 require "mongolian/version"
 
 module Mongolian
-  def self.hello(name)
-    puts "Sainuu, #{name}!"
+  def self.sainuu(name)
+    return "sainuu, #{name}!"
   end
 end

@@ -5,7 +5,7 @@ class MongolianTest < Minitest::Test
     refute_nil ::Mongolian::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_it_say_hello
+    assert_equal "sainuu, Mongolian!", Mongolian.sainuu("Mongolian")
   end
 end
