@@ -14,4 +14,8 @@ module Mongolian
       return 1
     end
   end
+  
+  def syllable(str)
+    return true
+  end
 end
