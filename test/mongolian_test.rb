@@ -29,4 +29,19 @@ class MongolianTest < Minitest::Test
     assert_equal 2, Mongolian.vowel_harmony("ᠮᠥᠭᠤᠯ")
   end
   
+  def test_syllabel
+    assert_equal ["ᠮᠣᠩ", "ᠭᠤᠯ"], Mongolian.syllable("ᠮᠣᠩᠭᠤᠯ")
+  end
+  
+  def test_vowel_harmony_with_wrong
+    assert_equal 11, Mongolian.vowel_harmony("ᠮᠤᠩᠭᠣᠯ")
+  end
+  
+  def test_sun_or_moon
+    assert_equal 1, Mongolian.sun_or_moon("ᠮᠣᠩᠭᠤᠯ")
+  end
+  
+  def test_sun_or_moon_is_moon
+    assert_equal 0, Mongolian.sun_or_moon("ᠡᠨᠡ")
+  end
 end
