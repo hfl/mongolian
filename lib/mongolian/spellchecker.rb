@@ -1,5 +1,5 @@
 module Mongolian
-  # 拼写检查包括元音和谐律检测、划分音节和词性检测
+  # 基于语法的拼写检查包括元音和谐律检测、划分音节和词性检测
 
   # 元音和谐律，P87
   def self.vowel_harmony(str)
@@ -23,7 +23,21 @@ module Mongolian
     end
   end
   
-  # 蒙古语里没有复辅音 P89
+  # 蒙古语里没有复辅音是指在书面语单音节中没有复辅音 P89
+  def self.double_constant_check(str)
+    mongolian_str = str
+    result = 1
+    syllable(mongolian_str).each do |s|
+      sv = s.scan(/[ᠠᠡᠢᠣᠤᠥᠦ]/).join
+      if s.index(sv) < 2 and s.size - s.index(sv) - sv.size < 2
+        next
+      else
+        result = 0
+        break
+      end
+    end
+    return result
+  end
   
   # 硬辅音 ᠪ(b) ᠭ(g) ᠷ(r) ᠰ(s) ᠳ(d) 后接以 ᠲ(t) ᠴ(q) 为首的附加成分
   # 软辅音 ᠨ(n) ᠮ(m) ᠯ(l) ᠩ(ng) 后接以 ᠳ(d) ᠵ(j)为首的附加成分
@@ -59,7 +73,7 @@ module Mongolian
     mongolian_str = str
     # 同时含有阴性元音和阳性元音，可能是外来词、双词根词或者拼写错误
     if mongolian_str =~ /[ᠠᠣᠤ]/ and mongolian_str =~ /[ᠡᠥᠦ]/
-      return -1
+      return 2
     # 只含有阳性元音为阳性词
     elsif mongolian_str =~ /[ᠠᠣᠤ]/
       return 1

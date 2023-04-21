@@ -38,7 +38,7 @@ class MongolianTest < Minitest::Test
   end
   
   def test_sun_or_moon_with_wrong_word
-    assert_equal -1, Mongolian.sun_or_moon("ᠮᠥᠩᠭᠤᠯ")
+    assert_equal 2, Mongolian.sun_or_moon("ᠮᠥᠩᠭᠤᠯ")
   end
   
   def test_sun_or_moon
@@ -47,5 +47,13 @@ class MongolianTest < Minitest::Test
   
   def test_sun_or_moon_is_moon
     assert_equal 0, Mongolian.sun_or_moon("ᠪᠢᠴᠢᠭ")
+  end
+  
+  def test_double_constant_check_with_wrong
+    assert_equal 0, Mongolian.double_constant_check("ᠪᠢᠣᠢᠭᠯ")
+  end
+  
+  def test_double_constant_check_with_right
+    assert_equal 1, Mongolian.double_constant_check("ᠪᠢᠴᠢᠭ")
   end
 end
