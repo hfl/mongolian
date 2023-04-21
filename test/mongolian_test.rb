@@ -37,11 +37,15 @@ class MongolianTest < Minitest::Test
     assert_equal 11, Mongolian.vowel_harmony("ᠮᠤᠩᠭᠣᠯ")
   end
   
+  def test_sun_or_moon_with_wrong_word
+    assert_equal -1, Mongolian.sun_or_moon("ᠮᠥᠩᠭᠤᠯ")
+  end
+  
   def test_sun_or_moon
     assert_equal 1, Mongolian.sun_or_moon("ᠮᠣᠩᠭᠤᠯ")
   end
   
   def test_sun_or_moon_is_moon
-    assert_equal 0, Mongolian.sun_or_moon("ᠡᠨᠡ")
+    assert_equal 0, Mongolian.sun_or_moon("ᠪᠢᠴᠢᠭ")
   end
 end
