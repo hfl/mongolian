@@ -42,6 +42,14 @@ module Mongolian
   # 硬辅音 ᠪ(b) ᠭ(g) ᠷ(r) ᠰ(s) ᠳ(d) 后接以 ᠲ(t) ᠴ(q) 为首的附加成分
   # 软辅音 ᠨ(n) ᠮ(m) ᠯ(l) ᠩ(ng) 后接以 ᠳ(d) ᠵ(j)为首的附加成分
   
+  # _ 用于分写 ᠠ(a)/ᠡ(e) 跟前面的辅音(h/g + a; n, l, m, s, sh, j, y, r , W + a/e)
+  def ae?(str)
+    if str =~ /᠎[ᠠᠡ]/
+      return true
+    else
+      false
+    end
+  end
   # 划分音节
   def self.syllable(str)
     mongolian_str = str
