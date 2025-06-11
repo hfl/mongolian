@@ -26,4 +26,33 @@ class TestMongolian < Minitest::Test
   def test_mongolian_stemmify
     assert "ᠨᠣᠮ", "ᠨᠣᠮ ᠤᠨ".mongolian_stemmify
   end
+  
+  def test_m2l
+    assert_equal "bičig", "ᠪᠢᠴᠢᠭ".m2l
+  end
+  
+  def test_vowel_harmony_with_m
+    assert_equal 1, "ᠮᠣᠩᠭᠤᠯ".vowel_harmony
+  end
+  
+  def test_vowel_harmony_with_f
+    assert_equal 2, "ᠪᠢᠴᠢᠭ".vowel_harmony
+  end
+  
+  def test_vowel_harmony_with_error
+    assert_equal 0, "ᠮᠥᠩᠭᠤᠯ".vowel_harmony
+  end
+  
+  def test_vowel_harmony_with_error_in_m
+    assert_equal 10, "ᠮᠤᠩᠭᠣᠯ".vowel_harmony
+  end
+  
+  def test_vowel_harmony_with_error_in_f
+    assert_equal 20, "ᠨᠦᠮᠥ".vowel_harmony
+  end
+  
+  def test_syllable
+    assert_equal 2, "ᠪᠢᠴᠢᠭ".syllable.size
+  end
+  
 end

@@ -1,6 +1,6 @@
 # Mongolian
 
-欢迎使用 Mongolian Gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mongolian`. To experiment with that code, run `bin/console` for an interactive prompt.
+欢迎使用 Mongolian Gem！本 Gem 打包了一些蒙古文处理常用的操作，例如分词、蒙古文转换为拉丁转写等。
 
 ## 安装
 
@@ -25,18 +25,18 @@ gem install mongolian
 
 ## 开发
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+查看代码库，运行 `bin/setup` 安装依赖库。运行 `rake test` 进行测试。运行 `bin/console` 启用提示互动体验程序功能。
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+本地安装 Gem，运行 `bundle exec rake install`。发布新版本，更新 `version.rb` 中的版本号，然后运行 `bundle exec rake release`，这将基于版本号创建一个 Git Tag，推送 Git 提交和创建 Tag，推送 `.gem` 文件到 [rubygems.org](https://rubygems.org)。
 
 ## 贡献
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mongolian. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/mongolian/blob/main/CODE_OF_CONDUCT.md).
+欢迎到 GitHub 的 https://github.com/hfl/mongolian 代码库提交问题报告和提交软件修正。
 
 ## 许可
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+本 Gem 基于[MIT 许可](https://opensource.org/licenses/MIT)分发。
 
 ## Code of Conduct
 
-Everyone interacting in the Mongolian project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mongolian/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Mongolian project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/hfl/mongolian/blob/main/CODE_OF_CONDUCT.md).
