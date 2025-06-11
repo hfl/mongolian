@@ -8,8 +8,8 @@ module Mongolian
   
   ## 对于混合有多个文种的一段文字，删除其中的非蒙古文字符和蒙古文标点符号后，
   #  仅对蒙古文分词。
-  #  函数返回仅包含蒙古文的分词数组。
-  def mongolian_tokenize
+  #  返回值为蒙古文分词数组。
+  def mon_tokenize
     w = self.dup.to_str
     # 去除标点符号，用空格替换标点符号
     w = w.gsub(/[!᠄?·᠃᠂⁈⁉᠁—;《》]/, " ")

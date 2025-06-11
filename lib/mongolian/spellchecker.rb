@@ -7,7 +7,7 @@ module Mongolian
   # 返回值 10：阳性词，但有错误，第一音节出现第五元音，却在后面出现了第四元音
   # 返回值 2：正确，阴性词
   # 返回值 20：阴性词，但有错误，第一音节出现第七元音，却在后面出现了第六元音
-  def vowel_harmony
+  def mon_vowel_harmony
     mongolian_str = self.dup.to_str
     #vowel = ["ᠠ", "ᠡ", "ᠢ", "ᠣ", "ᠤ", "ᠥ", "ᠦ"]
     if mongolian_str =~ /[ᠠᠣᠤ]/ and mongolian_str =~ /[ᠡᠥᠦ]/
@@ -15,14 +15,14 @@ module Mongolian
     else
       if mongolian_str =~ /[ᠠᠣᠤ]/
         #如果第一音节阳性元音为第 5 元音，却在后面出现第 4 元音，则错误
-        if mongolian_str.syllable[0] =~ /ᠤ/ and mongolian_str[mongolian_str.syllable[0].size..-1] =~ /ᠣ/
+        if mongolian_str.mon_syllable_classify[0] =~ /ᠤ/ and mongolian_str[mongolian_str.mon_syllable_classify[0].size..-1] =~ /ᠣ/
           return 10
         else
           return 1
         end
       else
         #如果第一音节阳性元音为第 7 元音，却在后面出现第 6 元音，则错误
-        if mongolian_str.syllable[0] =~ /ᠦ/ and mongolian_str[mongolian_str.syllable[0].size..-1] =~ /ᠥ/
+        if mongolian_str.mon_syllable_classify[0] =~ /ᠦ/ and mongolian_str[mongolian_str.mon_syllable_classify[0].size..-1] =~ /ᠥ/
           return 20
         else
           return 2
@@ -31,8 +31,9 @@ module Mongolian
     end
   end
   
-  # 对单词划分音节，返回音节数组
-  def syllable
+  # 对单词划分音节：每个元音前最多一个辅音前面既可划分音节
+  # 返回值是音节数组
+  def mon_syllable_classify
     mongolian_str = self.dup.to_str
     mlist = []
     s = ""
