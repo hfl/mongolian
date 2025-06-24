@@ -31,8 +31,8 @@ module Mongolian
     end
   end
   
-  # 对单词划分音节：每个元音前最多一个辅音前面既可划分音节
-  # 返回值是音节数组
+  # 对单词划分音节：每个元音前最多一个辅音前面既可划分音节。
+  # 返回值是音节数组。
   def mon_syllable_classify
     mongolian_str = self.dup.to_str
     mlist = []
@@ -59,10 +59,10 @@ module Mongolian
   end
   
   # 蒙古语里没有复辅音是指在书面语单音节中没有复辅音 P89
-  def self.double_constant_check(str)
+  def mon_double_constant_check(str)
     mongolian_str = str
     result = 1
-    syllable(mongolian_str).each do |s|
+    mongolian_str.mon_syllable_classify.each do |s|
       sv = s.scan(/[ᠠᠡᠢᠣᠤᠥᠦ]/).join
       if s.index(sv) < 2 and s.size - s.index(sv) - sv.size < 2
         next
@@ -76,13 +76,26 @@ module Mongolian
   
   # 硬辅音 ᠪ(b) ᠭ(g) ᠷ(r) ᠰ(s) ᠳ(d) 后接以 ᠲ(t) ᠴ(q) 为首的附加成分
   # 软辅音 ᠨ(n) ᠮ(m) ᠯ(l) ᠩ(ng) 后接以 ᠳ(d) ᠵ(j)为首的附加成分
+  def mon_constant_harmony
+    return true
+  end
   
   # _ 用于分写 ᠠ(a)/ᠡ(e) 跟前面的辅音(h/g + a; n, l, m, s, sh, j, y, r , W + a/e)
-  def ae?(str)
-    if str =~ /᠎[ᠠᠡ]/
+  def mon_ae?
+    str = self.dup.to_str
+    if str[-1] =~ /᠎[ᠠᠡ]/
+      if str[-2] == '᠎'
+        if str[-3] =~ /hnlmsshjyrW/
+          if str.mon_vowel_harmony == 1 and str[-1] == 'a'
+            return true
+          elsif str.mon_vowel_harmon == 2 and str[-1] == 'e'
+            return true
+          else
+            return false
+          end
+        end
+      end
       return true
-    else
-      false
     end
   end
   
