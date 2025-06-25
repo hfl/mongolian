@@ -19,9 +19,11 @@ gem install mongolian
 
 ## 用法
 
-1. 判断一个字符或者词是否包含蒙古文字符；
-2. 蒙古文分词；
-3. 蒙古文词干提取；
+由于本 Gem 扩展了 String 类，所以可以直接使用各种方法：
+
+```bash
+"Text".is_mongolian?
+```
 
 ## 开发
 
