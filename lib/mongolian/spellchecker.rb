@@ -1,28 +1,26 @@
 module Mongolian
-  # 基于语法的拼写检查包括元音和谐律及词性检测、划分音节等
+  # 基于语法规则的拼写检查，包括元音和谐律及词性检测、划分音节等
 
   # 测试单词是否符合元音和谐律，并判断词性 参考P87。
   # 返回值 0：错误，不符合元音和谐律，外来词、双词根词或者拼写错误；
   # 返回值 1：正确，且为阳性词；
-  # 返回值 10：阳性词，但有错误，第一音节出现第五元音，却在后面出现了第四元音；
+  # 返回值 10：阳性词，但有错误，第一音节出现第一元音、第五元音，却在后面出现了第四元音；
   # 返回值 2：正确，阴性词；
-  # 返回值 20：阴性词，但有错误，第一音节出现第七元音，却在后面出现了第六元音；
+  # 返回值 20：阴性词，但有错误，第一音节出现第二元音、第七元音，却在后面出现了第六元音；
   def mon_vowel_harmony
-    mongolian_str = self.dup.to_str
+    str = self.dup.to_str
     #vowel = ["ᠠ", "ᠡ", "ᠢ", "ᠣ", "ᠤ", "ᠥ", "ᠦ"]
-    if mongolian_str =~ /[ᠠᠣᠤ]/ and mongolian_str =~ /[ᠡᠥᠦ]/
+    if str =~ /[ᠠᠣᠤ]/ and str =~ /[ᠡᠥᠦ]/
       return 0
     else
-      if mongolian_str =~ /[ᠠᠣᠤ]/
-        #如果第一音节阳性元音为第 5 元音，却在后面出现第 4 元音，则错误
-        if mongolian_str.mon_syllable_classify[0] =~ /ᠤ/ and mongolian_str[mongolian_str.mon_syllable_classify[0].size..-1] =~ /ᠣ/
+      if str =~ /[ᠠᠣᠤ]/
+        if str.mon_syllable[0] =~ /[ᠠᠤ]/ and str[str.mon_syllable[0].size..-1] =~ /ᠣ/
           return 10
         else
           return 1
         end
       else
-        #如果第一音节阳性元音为第 7 元音，却在后面出现第 6 元音，则错误
-        if mongolian_str.mon_syllable_classify[0] =~ /ᠦ/ and mongolian_str[mongolian_str.mon_syllable_classify[0].size..-1] =~ /ᠥ/
+        if str.mon_syllable[0] =~ /[ᠡᠦ]/ and str[str.mon_syllable[0].size..-1] =~ /ᠥ/
           return 20
         else
           return 2
@@ -31,13 +29,13 @@ module Mongolian
     end
   end
   
-  # 对单词划分音节：每个元音前最多一个辅音前面既可划分音节。
+  # 单词划分音节：每个元音前最多一个辅音前面既可划分音节。
   # 返回值是音节数组。
-  def mon_syllable_classify
-    mongolian_str = self.dup.to_str
+  def mon_syllable
+    str = self.dup.to_str
     mlist = []
     s = ""
-    mongolian_str.each_char do |c|
+    str.each_char do |c|
       if c =~ /[ᠠᠡᠢᠣᠤᠥᠦ]/
         if s[-1] =~ /[ᠠᠡᠢᠣᠤᠥᠦ]/
           s += c
